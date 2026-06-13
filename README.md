@@ -86,6 +86,24 @@ On startup, the backend imports `sample-data/*.json` into MongoDB only when the 
 
 See [docs/API.md](docs/API.md) for endpoint details and response examples.
 
+## Local Runtime
+
+Run MongoDB and test the backend locally:
+
+```powershell
+docker compose up -d mongo
+cd backend
+.\gradlew.bat bootRun
+```
+
+In a new PowerShell session from the repository root:
+
+```powershell
+.\scripts\test_backend_api.ps1
+```
+
+See [docs/RUNTIME_TEST.md](docs/RUNTIME_TEST.md) for the full runtime test flow and troubleshooting notes.
+
 ## Security Notice
 
 - Do not add production `.env` files.
