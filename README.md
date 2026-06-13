@@ -1,14 +1,14 @@
 # CNC/MCT Analytics Dashboard Demo
 
-Portfolio demo for a CNC/MCT equipment analytics dashboard.
+Synthetic CNC/MCT manufacturing dashboard demo with a Spring Boot backend, MongoDB sample dataset, and React frontend.
 
-This repository is a public, rebuilt demo project. It is not a copy of production source code and does not include real database connections, customer data, equipment history, server IP addresses, credentials, logs, certificates, or private environment values.
+This repository is a public, rebuilt demo project. It is not a copy of production source code and does not include production data, customer data, real database connections, equipment history, server IP addresses, private credentials, logs, certificates, or private environment values.
 
 All future demo data will be synthetic sample data.
 
-## Planned Demo Scope
+## Demo Scope
 
-The planned demo will show analytics workflows for CNC/MCT equipment using a local-only stack:
+The demo shows analytics workflows for CNC/MCT equipment using a local-only stack:
 
 - Equipment utilization
 - RunTime / CutTime cutting ratio
@@ -17,21 +17,21 @@ The planned demo will show analytics workflows for CNC/MCT equipment using a loc
 - Daily trend charts
 - KPI cards and chart-based dashboard views
 
-## Planned Tech Stack
+## Tech Stack
 
 - Spring Boot API
-- React dashboard
+- Vite + React + TypeScript dashboard
 - MongoDB
 - Python seed script
 - Docker Compose
+- Recharts
 
-## Planned Local Demo Flow
+## Local Demo Flow
 
 1. Start local MongoDB.
-2. Seed synthetic sample data.
-3. Run the Spring Boot backend API.
-4. Run the React frontend.
-5. Open the dashboard and review synthetic CNC/MCT analytics.
+2. Run the Spring Boot backend API.
+3. Run the React frontend.
+4. Open the dashboard and review synthetic CNC/MCT analytics.
 
 ## Sample Data
 
@@ -86,9 +86,42 @@ On startup, the backend imports `sample-data/*.json` into MongoDB only when the 
 
 See [docs/API.md](docs/API.md) for endpoint details and response examples.
 
+## Frontend
+
+The React frontend lives in `frontend/` and calls the backend API through `VITE_API_BASE_URL`, defaulting to:
+
+```env
+VITE_API_BASE_URL=http://localhost:8090/api
+```
+
+Run:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Open:
+
+```text
+http://localhost:5173
+```
+
+Build:
+
+```powershell
+cd frontend
+npm run build
+```
+
+The frontend has no authentication, JWT handling, user administration, file upload/download, or mock fallback. API errors are shown on screen.
+
+See [docs/FRONTEND.md](docs/FRONTEND.md) for frontend details.
+
 ## Local Runtime
 
-Run MongoDB and test the backend locally:
+Run the full local demo:
 
 ```powershell
 docker compose up -d mongo
@@ -96,7 +129,17 @@ cd backend
 .\gradlew.bat bootRun
 ```
 
-In a new PowerShell session from the repository root:
+In a new PowerShell session:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173` in a browser.
+
+To smoke test the backend API from the repository root:
 
 ```powershell
 .\scripts\test_backend_api.ps1
