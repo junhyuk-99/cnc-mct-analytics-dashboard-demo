@@ -3,10 +3,10 @@ import type { StatusDistribution } from "../../types/dashboard";
 import { formatPercent, formatSeconds } from "../../utils/format";
 
 const STATUS_COLORS: Record<string, string> = {
-  RUNNING: "#2f6f73",
-  IDLE: "#c49a36",
-  ALARM: "#b84a4a",
-  OFFLINE: "#667085"
+  RUNNING: "#0be298",
+  IDLE: "#ffb77f",
+  ALARM: "#ffb4ab",
+  OFFLINE: "#88919d"
 };
 
 type StatusDistributionChartProps = {
@@ -17,7 +17,8 @@ export function StatusDistributionChart({ data }: StatusDistributionChartProps) 
   return (
     <section className="panel">
       <div className="panel-header">
-        <h2>Status Distribution</h2>
+        <h2>STATUS_DISTRIBUTION</h2>
+        <span>DONUT_RATIO</span>
       </div>
       <div className="status-layout">
         <div className="pie-frame">
@@ -41,6 +42,7 @@ export function StatusDistributionChart({ data }: StatusDistributionChartProps) 
                   ))}
                 </Pie>
                 <Tooltip
+                  contentStyle={{ background: "#111316", border: "1px solid #3f4852", color: "#e2e2e6" }}
                   formatter={(value, name, item) => {
                     const payload = item.payload as StatusDistribution;
                     return [

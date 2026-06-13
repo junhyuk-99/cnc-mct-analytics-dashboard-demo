@@ -17,6 +17,8 @@ The demo shows analytics workflows for CNC/MCT equipment using a local-only stac
 - Daily trend charts
 - KPI cards and chart-based dashboard views
 
+The frontend uses a dark `Synthetic Precision` command-center interface. It is read-only and replaces unavailable live camera, G-code, and production-control concepts with synthetic analytics panels derived from the local demo API.
+
 ## Tech Stack
 
 - Spring Boot API

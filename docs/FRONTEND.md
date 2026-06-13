@@ -84,13 +84,25 @@ If `success` is not `true`, or if the HTTP request fails, the dashboard shows an
 
 ## Implemented UI
 
-- App shell with demo data notices
+- Synthetic Precision command-center app shell with demo data notices
 - Date, machine, and severity filters
-- Refresh action and loading state
+- `REFRESH_ANALYTICS` action, measured frontend request latency, and loading state
 - API error and empty states
-- KPI cards
-- Utilization bar chart
-- Cutting ratio bar chart
-- Status distribution chart
-- Daily trend chart
-- Alarm history table capped at 50 visible rows
+- Cyber telemetry KPI cards for fleet size, average utilization, cutting ratio, derived active ratio, alarm events, and critical vectors
+- Data-backed fleet overview and selected machine focus panel
+- CSS/SVG-only `SYNTHETIC MACHINING ENVELOPE` visualization with `NO LIVE CONTROL LINK` and `READ_ONLY_ANALYTICS` labels
+- Critical vectors panel derived from critical alarm records, with read-only demo labels instead of control actions
+- Frontend-generated `ANALYTICS_EVENT_LOG` based on loaded API results and active filters
+- Dark themed utilization, cutting ratio, status distribution, and daily trend Recharts visualizations
+- Terminal-style alarm history table capped at 50 visible rows
+
+## Data Mapping Notes
+
+The reference command-center style includes live camera, G-code, OEE, and production control concepts that are not exposed by the demo API. The frontend intentionally maps or replaces those concepts with available synthetic analytics data:
+
+- `OEE_INDEX` style KPI is represented by `AVG_UTIL`.
+- `PERFORMANCE` style KPI is represented by `CUT_RATIO`.
+- `FLEET_ACTIVE_RATIO` is derived from `runningMachineCount / machineCount`.
+- Live camera or machining telemetry is represented by the CSS-only `SYNTHETIC MACHINING ENVELOPE`.
+- G-code terminal output is replaced by `ANALYTICS_EVENT_LOG`.
+- Emergency stop, halt, acknowledge, and other production-control actions are not included.

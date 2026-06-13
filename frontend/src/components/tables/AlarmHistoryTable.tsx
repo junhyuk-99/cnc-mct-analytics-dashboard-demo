@@ -11,7 +11,7 @@ export function AlarmHistoryTable({ data }: AlarmHistoryTableProps) {
   return (
     <section className="panel wide">
       <div className="panel-header">
-        <h2>Alarm History</h2>
+        <h2>ALARM_HISTORY</h2>
         <span>{visibleRows.length} shown</span>
       </div>
       {visibleRows.length === 0 ? (
@@ -31,7 +31,7 @@ export function AlarmHistoryTable({ data }: AlarmHistoryTableProps) {
             </thead>
             <tbody>
               {visibleRows.map((alarm) => (
-                <tr key={alarm.alarmId}>
+                <tr key={alarm.alarmId} className={alarm.severity === "CRITICAL" ? "critical-row" : undefined}>
                   <td>{formatDateTime(alarm.occurredAt)}</td>
                   <td>{alarm.machineId}</td>
                   <td>

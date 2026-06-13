@@ -9,9 +9,9 @@ type MachineFilterProps = {
 export function MachineFilter({ machines, value, onChange }: MachineFilterProps) {
   return (
     <label>
-      <span>Machine</span>
+      <span>MACHINE</span>
       <select value={value} onChange={(event) => onChange(event.target.value)}>
-        <option value="">All machines</option>
+        <option value="">ALL_MACHINES</option>
         {machines.map((machine) => (
           <option key={machine.machineId} value={machine.machineId}>
             {machine.machineId} / {machine.machineName}
