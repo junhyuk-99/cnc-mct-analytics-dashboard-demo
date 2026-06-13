@@ -33,6 +33,16 @@ The demo shows analytics workflows for CNC/MCT equipment using a local-only stac
 3. Run the React frontend.
 4. Open the dashboard and review synthetic CNC/MCT analytics.
 
+## Screenshots
+
+### Dashboard Overview
+
+![Dashboard Overview](screenshots/dashboard-overview.png)
+
+### Critical Alarm Filter
+
+![Critical Alarm Filter](screenshots/dashboard-critical-filter.png)
+
 ## Sample Data
 
 Generate local synthetic sample data with:
