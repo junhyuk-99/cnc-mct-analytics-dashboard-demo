@@ -43,6 +43,49 @@ python scripts/generate_sample_data.py
 
 The generated files under `sample-data/` are fake demo records only. They are not copied from real production systems.
 
+## Backend
+
+The Spring Boot backend lives in `backend/` and exposes read-only demo APIs over synthetic MongoDB collections:
+
+- `machines`
+- `status_history`
+- `runtime_cuttime`
+- `alarm_history`
+- `daily_summary`
+
+Configuration defaults:
+
+- Java 17
+- Spring Boot 3.x
+- Server port `8090`
+- MongoDB URI `${MONGODB_URI:mongodb://localhost:27017/cnc_mct_demo}`
+- CORS origins `http://localhost:3000` and `http://localhost:5173`
+
+Run with the included Gradle wrapper:
+
+```powershell
+cd backend
+.\gradlew.bat bootRun
+```
+
+Or run with an installed Gradle:
+
+```powershell
+cd backend
+gradle bootRun
+```
+
+Build:
+
+```powershell
+cd backend
+.\gradlew.bat build
+```
+
+On startup, the backend imports `sample-data/*.json` into MongoDB only when the target collections are empty. The loader works from either the repository root or the `backend/` directory.
+
+See [docs/API.md](docs/API.md) for endpoint details and response examples.
+
 ## Security Notice
 
 - Do not add production `.env` files.

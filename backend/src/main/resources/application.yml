@@ -1,0 +1,15 @@
+server:
+  port: ${SERVER_PORT:8090}
+
+spring:
+  application:
+    name: cnc-mct-dashboard-demo-backend
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/cnc_mct_demo}
+
+demo:
+  cors:
+    allowed-origins:
+      - http://localhost:3000
+      - http://localhost:5173
