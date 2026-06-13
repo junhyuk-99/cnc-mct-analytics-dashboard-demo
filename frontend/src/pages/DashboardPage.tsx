@@ -151,7 +151,7 @@ export function DashboardPage() {
         </div>
       ) : null}
 
-      <section className="kpi-grid" aria-label="dashboard KPI cards">
+      <section id="overview" className="kpi-grid section-anchor" aria-label="dashboard KPI cards">
         <KpiCard label="Machine Count" value={formatNumber(summary?.machineCount)} />
         <KpiCard label="Average Utilization" value={formatPercent(summary?.averageUtilization)} />
         <KpiCard
@@ -169,11 +169,21 @@ export function DashboardPage() {
       {isLoading ? <div className="loading-strip">Loading dashboard data...</div> : null}
 
       <section className="dashboard-grid">
-        <UtilizationBarChart data={filteredUtilization} />
-        <CuttingRatioChart data={filteredCuttingRatio} />
-        <StatusDistributionChart data={statusDistribution} />
-        <DailyTrendChart data={dailyTrend} />
-        <AlarmHistoryTable data={alarms} />
+        <div id="utilization" className="section-anchor">
+          <UtilizationBarChart data={filteredUtilization} />
+        </div>
+        <div id="cutting-ratio" className="section-anchor">
+          <CuttingRatioChart data={filteredCuttingRatio} />
+        </div>
+        <div id="status-distribution" className="section-anchor">
+          <StatusDistributionChart data={statusDistribution} />
+        </div>
+        <div id="daily-trend" className="section-anchor grid-wide">
+          <DailyTrendChart data={dailyTrend} />
+        </div>
+        <div id="alarm-history" className="section-anchor grid-wide">
+          <AlarmHistoryTable data={alarms} />
+        </div>
       </section>
     </div>
   );
